@@ -1,8 +1,12 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import chrome from "chrome-aws-lambda";
-import puppeteer from "puppeteer-core";
+// import chrome from "chrome-aws-lambda";
+// import puppeteer from "puppeteer-core";
 
 export default async function handler(req, res) {
+  const chrome = await import("chrome-aws-lambda");
+  console.log('imported chrome', chrome);
+  const puppeteer = await import("puppeteer-core");
+  console.log('imported puppeteer', puppeteer);
   const options = {
     args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
     defaultViewport: chrome.defaultViewport,
