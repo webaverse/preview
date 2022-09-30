@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import playwright from "playwright-aws-lambda";
+const playwright = require("playwright-aws-lambda");
 
 export default async function handler(req, res) {
   const browser = await playwright.launchChromium({ headless: true });
