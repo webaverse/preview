@@ -22,15 +22,12 @@
     "playwright-core": "1.22.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
     "dotenv-safe": "^8.2.0",
     "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "simple-git-hooks": "^2.8.0",
     "vercel": "^28.1.0",
     "webpack": "^5.74.0",
     "webpack-node-externals": "^3.0.0"
@@ -66,15 +63,6 @@
     "semi": false,
     "singleQuote": true,
     "bracketSpacing": true
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "simple-git-hooks": {
-    "commit-msg": "npx commitlint --edit",
-    "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,json}": [
