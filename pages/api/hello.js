@@ -2,7 +2,7 @@
 import chrome from "chrome-aws-lambda";
 import puppeteer from "puppeteer-core";
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const options = {
     args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
     defaultViewport: chrome.defaultViewport,
