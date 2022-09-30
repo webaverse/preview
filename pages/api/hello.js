@@ -1,6 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import chrome from "chrome-aws-lambda";
-import puppeteer from "puppeteer-core";
+import playwright from "playwright-aws-lambda";
 
 export default async function handler(req, res) {
   const browser = await playwright.launchChromium({ headless: true });
