@@ -2,7 +2,7 @@ import chrome from 'chrome-aws-lambda'
 import { chromium } from 'playwright-core'
 // import { serverTiming } from './../lib/helpers.js'
 
-const app = express();
+// const app = express();
 
 const handleScreenshot = async ({ params, url }) => {
   // const { colorScheme, skipCookieBannerClick } = params
