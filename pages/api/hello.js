@@ -18,7 +18,10 @@ export default function handler(req, res) {
   await page.goto("https://en.wikipedia.org/", {
     waitUntil: "networkidle0",
   });
-  await page.screenshot({ path: "bexer.png" });
+  const buffer = await page.screenshot();
+
+  res.setHeader("Content-Type", "image/png");
+  res.send(buffer);
 
   await browser.close();
 }
