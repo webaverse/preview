@@ -28,7 +28,7 @@ const handleScreenshot = async ({ params, url }) => {
   return buffer
 }
 
-export default async (req, reply) => {
+export default async (req, res) => {
   let {url} = req.query
 
   if (url) {
@@ -36,8 +36,8 @@ export default async (req, reply) => {
       params: req.query,
       url,
     });
-    reply.setHeader('Content-Type', 'image/png');
-    reply.send(imageBuffer);
+    res.setHeader('Content-Type', 'image/png');
+    res.send(imageBuffer);
   } else {
     res.send(400);
   }
