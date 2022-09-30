@@ -44,15 +44,22 @@ const handleScreenshot = async ({ params, url }) => {
 }
 
 export default async (req, reply) => {
-  let { url } = req.query
+  let {url} = req.query
 
-  // Set the `s-maxage` property to cache at the CDN layer
-  // reply.header('Cache-Control', 's-maxage=31536000, public')
-  // reply.header('Content-Type', 'image/png')
+  if (url) {
+    // Set the `s-maxage` property to cache at the CDN layer
+    // reply.header('Cache-Control', 's-maxage=31536000, public')
+    // reply.header('Content-Type', 'image/png')
 
-  // Generate Server-Timing headers
-  const imageBuffer = await handleScreenshot({ params: req.query, url })
-  // reply.header('Server-Timing', serverTiming.setHeader())
-  reply.setHeader('Content-Type', 'image/png')
-  reply.send(imageBuffer)
+    // Generate Server-Timing headers
+    const imageBuffer = await handleScreenshot({
+      params: req.query,
+      url,
+    });
+    // reply.header('Server-Timing', serverTiming.setHeader())
+    reply.setHeader('Content-Type', 'image/png');
+    reply.send(imageBuffer);
+  } else {
+    res.send(400);
+  }
 }
