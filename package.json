@@ -32,44 +32,7 @@
     "webpack": "^5.74.0",
     "webpack-node-externals": "^3.0.0"
   },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "puppeteer-core"
-      ]
-    }
-  },
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
-    },
-    "extends": [
-      "eslint:recommended",
-      "prettier"
-    ],
-    "env": {
-      "node": true,
-      "es6": true
-    },
-    "plugins": [
-      "prettier"
-    ],
-    "rules": {
-      "prettier/prettier": "error"
-    }
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "bracketSpacing": true
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,css,json}": [
-      "prettier --write"
-    ],
-    "*.js": [
-      "eslint --fix"
-    ]
+  "engines": {
+    "node": "14.x"
   }
 }
