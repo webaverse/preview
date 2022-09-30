@@ -3,22 +3,21 @@ import chrome from "chrome-aws-lambda";
 import puppeteer from "puppeteer-core";
 
 export default function handler(req, res) {
-  const options = {
-    args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
-    defaultViewport: chrome.defaultViewport,
-    executablePath: await chrome.executablePath,
-    headless: true,
-    ignoreHTTPSErrors: true,
-  };
-  console.log("trying to execute");
-  const browser = await puppeteer.launch(options);
-  console.log("browser launched");
-  const page = await browser.newPage();
-  await page.setViewport({ width: 2000, height: 1000 });
+  const browser = await playwright.launchChromium({ headless: true });
+  const context = await browser.newContext({
+    viewport: { width: 1024, height: 1024 },
+  });
+
+  const page = await context.newPage();
   await page.goto("https://en.wikipedia.org/", {
     waitUntil: "networkidle0",
   });
-  await page.screenshot({ path: "bexer.png" });
 
+  const buffer = await page.screenshot();
+
+  res.setHeader("Content-Type", "image/png");
+  res.send(buffer);
+
+  await context.close();
   await browser.close();
-}
+};
