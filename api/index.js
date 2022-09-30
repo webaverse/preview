@@ -2,7 +2,7 @@ import chrome from 'chrome-aws-lambda'
 import {chromium} from 'playwright-core'
 
 const handleScreenshot = async ({
-  params,
+  // params,
   url,
 }) => {
   const browser = await chromium.launch({
@@ -32,12 +32,12 @@ const handleScreenshot = async ({
 }
 
 export default async (req, res) => {
-  let {url} = req.query
+  let {url} = req.query;
 
   if (url) {
     try {
       const imageBuffer = await handleScreenshot({
-        params: req.query,
+        // params: req.query,
         url,
       });
       res.setHeader('Content-Type', 'image/png');
